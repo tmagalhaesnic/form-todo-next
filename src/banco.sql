@@ -1,0 +1,9 @@
+CREATE DATABASE todonext;
+
+use todonext;
+
+CREATE TABLE task (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  content VARCHAR(30) NOT NULL,
+  is_done BOOLEAN DEFAULT FALSE
+);

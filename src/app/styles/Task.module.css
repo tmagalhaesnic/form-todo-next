@@ -1,0 +1,232 @@
+/* Estilo para a lista de tarefas */
+.to-do-list {
+    max-width: 450px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #ececec;
+    margin-top: 200px;
+  }
+  
+  .to-do-list h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .to-do-list div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .to-do-list input[type="text"] {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .to-do-list .add-button,
+  .to-do-list .save-button,
+  .to-do-list .cancel-button {
+    margin-left: 10px;
+    padding: 8px 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    
+  }
+  
+  .to-do-list .add-button:hover,
+  .to-do-list .save-button:hover,
+  .to-do-list .cancel-button:hover {
+    background-color: #45a049;
+  }
+  
+  .to-do-list ol {
+    list-style-type: decimal;
+    padding-left: 20px;
+  }
+  
+  .to-do-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .to-do-list p{
+    text-align: center;
+  }
+  
+  .to-do-list li .text {
+    flex: 1;
+  }
+  
+  .to-do-list li .delete-button,
+  .to-do-list li .edit-button,
+  .to-do-list li .done-button {
+    margin-left: 10px;
+    padding: 4px 8px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+  }
+  
+  .to-do-list li .edit-button {
+    background-color: #ffc107;
+  }
+  
+  .to-do-list li .done-button {
+    background-color: #2196F3;
+  }
+  
+  .to-do-list li .delete-button:hover {
+    background-color: #d32f2f;
+  }
+  
+  .to-do-list li .edit-button:hover {
+    background-color: #e0a800;
+  }
+  
+  .to-do-list li .done-button:hover {
+    background-color: #1976D2;
+  }
+  
+  .done .text {
+    text-decoration: line-through;
+    color: red;
+    opacity: 0.7
+  }
+  
+  /* Estilo para o modo de edição */
+  .to-do-list li .save-button,
+  .to-do-list li .cancel-button {
+    margin-left: 10px;
+    padding: 4px 8px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+  }
+  
+  .to-do-list li .cancel-button {
+    background-color: #f44336;
+  }
+  
+  .to-do-list li .save-button:hover {
+    background-color: #45a049;
+  }
+  
+  .to-do-list li .cancel-button:hover {
+    background-color: #d32f2f;
+  }
+  
+  
+  .logout-button {
+    display: block; /* Garante que o botão se comporte como um bloco */
+    margin: 0 auto; /* Centraliza horizontalmente com margem automática */
+    width: 100%;
+    max-width: 80px;
+    padding: 8px 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    align-items: center;
+    animation: blink-border 0.5s linear;
+  }
+  
+  
+  .logout-button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Estilo para a página de identificação */
+  .identification {
+    max-width: 400px;
+    margin: 0 auto; /* Centraliza o contêiner na página */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #ececec;
+    text-align: center; /* Centraliza o texto e os elementos dentro do contêiner */
+    margin-top: 200px;
+  }
+  
+  .identification h1 {
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .identification input {
+    width: 100%; /* Faz o input ocupar toda a largura do contêiner */
+    max-width: 300px; /* Define uma largura máxima para evitar que o input fique muito largo */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-bottom: 10px; /* Espaço entre o input e o botão */
+    box-sizing: border-box; /* Inclui padding e bordas na largura total */
+  }
+  
+  .submit-buttons {
+    width: 100%; /* Faz o botão ocupar toda a largura do contêiner */
+    max-width: 300px; /* Define uma largura máxima para o botão */
+    padding: 8px 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px; /* Ajusta o tamanho da fonte do botão */
+    box-sizing: border-box; /* Inclui padding e bordas na largura total */
+    animation: blink-border 0.5s linear;
+  }
+  
+  .submit-buttons:hover {
+    background-color: #45a049;
+  }
+  
+  /* Estilo para o campo de input com erro */
+  .error-input {
+    border: 2px solid red;
+    animation: blink-border 0.5s linear;
+  }
+  
+  /* Estilo para a mensagem de erro */
+  .error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    margin-bottom: 10px; 
+  }
+  
+  @keyframes blink-border {
+    0% { border-color: red; }
+    50% { border-color: transparent; }
+    100% { border-color: red; }
+  }
+  
+  .search-input {
+    width: 100%;
+    max-width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
