@@ -1,13 +1,16 @@
 /* Estilo para a lista de tarefas */
 .to-do-list {
-    max-width: 450px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #ececec;
-    margin-top: 200px;
-  }
+  max-width: 450px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #ececec;
+  margin-top: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
   
   .to-do-list h1 {
     text-align: center;
@@ -19,6 +22,7 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
+    margin-top: 10px;
   }
   
   .to-do-list input[type="text"] {
@@ -27,6 +31,7 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 14px;
+    width: 350px;
   }
   
   .to-do-list .add-button,
@@ -39,7 +44,19 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    
+  
+  }
+
+  .clear-button{
+    padding: 8px 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 150px; /* Largura fixa */
+    height: 50px; 
+    text-align: center;
   }
   
   .to-do-list .add-button:hover,
@@ -53,12 +70,24 @@
     padding-left: 20px;
   }
   
+  .to-do-list ul{
+    list-style-type: none; /* Remove marcadores padrão */
+    padding: 0; /* Remove o padding padrão */
+    margin: 0; /* Remove a margem padrão */
+    max-width: 90vw; /* Define a largura máxima como 90% da largura da viewport */
+    max-height: 60vh; /* Define a altura máxima como 60% da altura da viewport */
+    box-sizing: border-box; /* Inclui bordas e padding no cálculo da largura e altura */
+    border: 1px solid #ddd; /* Adiciona uma borda cinza clara */
+    border-radius: 5px; /* Adiciona bordas arredondadas */
+    background-color: #f9f9f9; /* Define a cor de fundo */
+    display: flex; /* Usa flexbox para layout */
+    flex-direction: column; /* Organiza os itens na coluna */
+  }
+
   .to-do-list li {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px 0;
-    border-bottom: 1px solid #ddd;
   }
   
   .to-do-list p{
@@ -80,6 +109,7 @@
     border-radius: 4px;
     cursor: pointer;
     font-size: 12px;
+        
   }
   
   .to-do-list li .edit-button {
@@ -230,3 +260,5 @@
     margin-bottom: 10px;
     box-sizing: border-box;
   }
+
+  
