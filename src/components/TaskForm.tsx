@@ -1,7 +1,5 @@
-  import { useState } from 'react';
+  import React,{ useState } from 'react';
   import styles from '../app/styles/Task.module.css';
-  import ClearTasksButton from './ClearTasksButton';
-import TaskList from './TaskList';
 
   interface TaskFormProps {
     onAddTask: (content: string) => void;

@@ -20,7 +20,7 @@ const ClearTasksButton: React.FC<ClearTasksButtonProps> = ({ setTasks }) => {
     <button
       type="button"
       onClick={handleClearTasks}
-      className={styles['add-button']}
+      className={styles['clear-button']}
     >
       Clear All Tasks
     </button>

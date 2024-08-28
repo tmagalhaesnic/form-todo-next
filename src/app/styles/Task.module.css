@@ -1,14 +1,14 @@
 /* Estilo para a lista de tarefas */
 .to-do-list {
-  max-width: 450px;
+  max-width: 500px;
   margin: 0 auto;
   padding: 20px;
-  border: 1px solid #ccc;
   border-radius: 8px;
   background-color: #ececec;
   margin-top: 150px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 10px;
 }
   
@@ -54,9 +54,6 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    width: 150px; /* Largura fixa */
-    height: 50px; 
-    text-align: center;
   }
   
   .to-do-list .add-button:hover,
@@ -73,13 +70,10 @@
   .to-do-list ul{
     list-style-type: none; /* Remove marcadores padrão */
     padding: 0; /* Remove o padding padrão */
-    margin: 0; /* Remove a margem padrão */
     max-width: 90vw; /* Define a largura máxima como 90% da largura da viewport */
     max-height: 60vh; /* Define a altura máxima como 60% da altura da viewport */
     box-sizing: border-box; /* Inclui bordas e padding no cálculo da largura e altura */
-    border: 1px solid #ddd; /* Adiciona uma borda cinza clara */
     border-radius: 5px; /* Adiciona bordas arredondadas */
-    background-color: #f9f9f9; /* Define a cor de fundo */
     display: flex; /* Usa flexbox para layout */
     flex-direction: column; /* Organiza os itens na coluna */
   }
@@ -183,34 +177,6 @@
   
   .logout-button:hover {
     background-color: #45a049;
-  }
-  
-  /* Estilo para a página de identificação */
-  .identification {
-    max-width: 400px;
-    margin: 0 auto; /* Centraliza o contêiner na página */
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #ececec;
-    text-align: center; /* Centraliza o texto e os elementos dentro do contêiner */
-    margin-top: 200px;
-  }
-  
-  .identification h1 {
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  .identification input {
-    width: 100%; /* Faz o input ocupar toda a largura do contêiner */
-    max-width: 300px; /* Define uma largura máxima para evitar que o input fique muito largo */
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-    margin-bottom: 10px; /* Espaço entre o input e o botão */
-    box-sizing: border-box; /* Inclui padding e bordas na largura total */
   }
   
   .submit-buttons {

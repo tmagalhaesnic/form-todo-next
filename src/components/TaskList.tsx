@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import styles from '../app/styles/Task.module.css';
 import ClearTasksButton from './ClearTasksButton';
+import TaskForm from './TaskForm';
 
 interface Task {
   id: number;
@@ -13,23 +14,31 @@ const TaskList: React.FC = () => {
   const [editTaskId, setEditTaskId] = useState<number | null>(null);
   const [editContent, setEditContent] = useState<string>('');
 
+  const fetchTasks = async () => {
+    const res = await fetch('/api/tasks');
+    const data = await res.json();
+    setTasks(data);
+  };
+
+  const addTask = async (content: string) => {
+    await fetch('/api/tasks', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ content }),
+    });
+    await fetchTasks();
+  };
 
   useEffect(() => {
-    fetch('/api/tasks')
-      .then((res) => res.json())
-      .then((data) => setTasks(data));
+    fetchTasks();
   }, []);
 
   const handleUpdate = (id: number, newContent: string) => {
     fetch('/api/tasks', {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id, content: newContent, is_done: false }), // Assuming you want to reset is_done on update
-    }).then(() => {
-      setTasks(tasks.map((task) =>
-        task.id === id ? { ...task, content: newContent } : task
-      ));
-    }).catch((error) => console.error('Error updating task:', error));
+      body: JSON.stringify({ id, content: newContent, is_done: false }),
+    }).then(() => fetchTasks()).catch((error) => console.error('Error updating task:', error));
   };
 
   const handleDelete = (id: number) => {
@@ -38,7 +47,7 @@ const TaskList: React.FC = () => {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id }),
-      }).then(() => setTasks(tasks.filter((task) => task.id !== id)));
+      }).then(() => fetchTasks()).catch((error) => console.error('Error deleting task:', error));
     }
   };
 
@@ -47,21 +56,15 @@ const TaskList: React.FC = () => {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ id, is_done: !is_done, content: '' }),
-    }).then(() => setTasks(tasks.map((task) => (task.id === id ? { ...task, is_done: !is_done } : task))));
+    }).then(() => fetchTasks()).catch((error) => console.error('Error toggling task status:', error));
   };
 
-  const handleClearTasks = () => {
-    if (confirm('Are you sure you want to clear all tasks?')) {
-      fetch('/api/tasks', { method: 'DELETE' })
-        .then(() => setTasks([]))
-        .catch((error) => console.error('Error clearing tasks:', error));
-    }
-  };
-  
   return (
     <div className={styles['to-do-list']}>
+
+      <h1>To-Do List</h1>
+      <TaskForm onAddTask={addTask} />
       <ClearTasksButton setTasks={setTasks} />
-  
       <ul className={styles['task-list']}>
         {tasks.map((task) => (
           <li key={task.id}>
@@ -77,7 +80,7 @@ const TaskList: React.FC = () => {
                     handleUpdate(task.id, editContent);
                     setEditTaskId(null);
                   }}
-                  className={styles['add-button']}
+                  className={styles['done-button']}
                 >
                   Save
                 </button>
@@ -96,27 +99,27 @@ const TaskList: React.FC = () => {
                   {task.content}
                 </span>
                 <div>
-                <button
-                  onClick={() => handleToggleDone(task.id, task.is_done)}
-                  className={task.is_done ? styles['done-button'] : styles['done-button']}
-                >
-                  {task.is_done ? 'Undo' : 'Done'}
-                </button>
-                <button
-                  onClick={() => {
-                    setEditTaskId(task.id);
-                    setEditContent(task.content);
-                  }}
-                  className={styles['edit-button']}
-                >
-                  Edit
-                </button>
-                <button
-                  onClick={() => handleDelete(task.id)}
-                  className={styles['delete-button']}
-                >
-                  Delete
-                </button>
+                  <button
+                    onClick={() => handleToggleDone(task.id, task.is_done)}
+                    className={task.is_done ? styles['done-button'] : styles['done-button']}
+                  >
+                    {task.is_done ? 'Undo' : 'Done'}
+                  </button>
+                  <button
+                    onClick={() => {
+                      setEditTaskId(task.id);
+                      setEditContent(task.content);
+                    }}
+                    className={styles['edit-button']}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    onClick={() => handleDelete(task.id)}
+                    className={styles['delete-button']}
+                  >
+                    Delete
+                  </button>
                 </div>
               </>
             )}
@@ -125,5 +128,5 @@ const TaskList: React.FC = () => {
       </ul>
     </div>
   );
-}  
+}
 export default TaskList;
