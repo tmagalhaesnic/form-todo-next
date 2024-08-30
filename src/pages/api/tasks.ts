@@ -25,8 +25,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     res.status(200).end();
   } else if (method === 'PUT') {
     const { id, content, is_done } = req.body;
-    if (typeof id === 'number' && typeof content === 'string' && typeof is_done === 'boolean') {
-      await connection.query('UPDATE task SET content = ?, is_done = ? WHERE id = ?', [content, is_done, id]);
+    if (typeof id === 'number' && typeof is_done === 'boolean') {
+      await connection.query('UPDATE task SET is_done = ? WHERE id = ?', [is_done, id]);
       res.status(200).end();
     } else {
       res.status(400).json({ message: 'Invalid input' });

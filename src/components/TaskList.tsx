@@ -20,6 +20,10 @@ const TaskList: React.FC = () => {
     setTasks(data);
   };
 
+  useEffect(() => {
+    fetchTasks();
+  }, []);
+
   const addTask = async (content: string) => {
     await fetch('/api/tasks', {
       method: 'POST',
@@ -29,9 +33,6 @@ const TaskList: React.FC = () => {
     await fetchTasks();
   };
 
-  useEffect(() => {
-    fetchTasks();
-  }, []);
 
   const handleUpdate = (id: number, newContent: string) => {
     fetch('/api/tasks', {
@@ -55,8 +56,8 @@ const TaskList: React.FC = () => {
     fetch('/api/tasks', {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id, is_done: !is_done, content: '' }),
-    }).then(() => fetchTasks()).catch((error) => console.error('Error toggling task status:', error));
+      body: JSON.stringify({ id, is_done: !is_done }),
+    }).then(() => setTasks(tasks.map((task) => (task.id === id ? { ...task, is_done: !is_done } : task))));
   };
 
   return (
